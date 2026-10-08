@@ -1,0 +1,2 @@
+-keep class com.salesapp.android.data.entities.** { *; }
+-keep class com.salesapp.android.backup.** { *; }
