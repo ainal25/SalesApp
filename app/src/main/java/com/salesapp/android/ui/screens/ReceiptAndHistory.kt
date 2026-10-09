@@ -3,6 +3,8 @@ package com.salesapp.android.ui.screens
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -97,7 +99,7 @@ fun HistoryScreen(vm: MainVM, nav: NavController, storeId: String?) {
             onBack = { nav.popBackStack() }
         )
     }) { inner ->
-        androidx.compose.foundation.lazy.LazyColumn(
+        LazyColumn(
             Modifier.padding(inner).fillMaxSize(),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -105,7 +107,7 @@ fun HistoryScreen(vm: MainVM, nav: NavController, storeId: String?) {
             if (filtered.isEmpty()) {
                 item { Text("Belum ada transaksi.", color = MaterialTheme.colorScheme.onSurfaceVariant) }
             }
-            androidx.compose.foundation.lazy.items(filtered, key = { it.id }) { tx ->
+            items(filtered, key = { it.id }) { tx ->
                 Card {
                     Column(Modifier.padding(14.dp)) {
                         Row {
