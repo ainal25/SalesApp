@@ -124,6 +124,7 @@ fun ProductsScreen(vm: MainVM, nav: NavController) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductFormScreen(vm: MainVM, nav: NavController, idArg: String?) {
     val products by vm.products.collectAsState()
@@ -146,7 +147,7 @@ fun ProductFormScreen(vm: MainVM, nav: NavController, idArg: String?) {
                     category, {}, readOnly = true,
                     label = { Text("Kategori") },
                     trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expandCat) },
-                    modifier = Modifier.menuAnchor().fillMaxWidth()
+                    modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled = true).fillMaxWidth()
                 )
                 ExposedDropdownMenu(expanded = expandCat, onDismissRequest = { expandCat = false }) {
                     categories.forEach { cat ->
